@@ -6,6 +6,7 @@ A Java 17 project containing solutions for various programming problems.
 
 1. **Top K Frequent Words** - Finding the top k most frequent words from an array
 2. **JSON Validator** - Validating nested JSON structure
+3. **Word Counter** - Counting word frequencies in a text
 
 ---
 
@@ -125,3 +126,55 @@ The solution uses recursive validation:
 3. Recursively validates all values (Map, List/Array, or primitives)
 4. Returns false if any invalid structure is found
 
+---
+
+## 3. Word Counter
+
+### Problem Description
+
+Count the frequency of every word in a given text. Words are counted case-insensitively and sorted alphabetically. Punctuation is preserved with the words.
+
+### Features
+
+- Case-insensitive word counting (e.g., "Hello", "hello", "HELLO" are treated as the same word)
+- Words are sorted alphabetically in the output
+- Punctuation is preserved as part of the word
+- Handles null and empty input gracefully (no output)
+
+### Example
+
+#### Example Input
+```
+"This is a test. This is only a test."
+```
+
+#### Example Output
+```
+a -> 2
+is -> 2
+only -> 1
+test. -> 2
+this -> 2
+```
+
+Note: Words are sorted alphabetically (lowercase). The word "test." appears twice with the period preserved. "This" and "this" are counted together (case-insensitive).
+
+### Running the Word Counter
+
+#### Run the main class
+```bash
+mvn exec:java -Dexec.mainClass="com.example.WordCounter"
+```
+
+#### Run tests
+```bash
+mvn test -Dtest=WordCounterTest
+```
+
+### Implementation
+
+The solution:
+1. Splits the text by whitespace to extract words
+2. Uses a HashMap with lowercase keys to count word frequencies (case-insensitive)
+3. Sorts the words alphabetically for display
+4. Prints each word with its frequency count
